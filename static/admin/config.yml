@@ -16,3 +16,11 @@ collections:
       - { name: title, label: Title }
       - { name: description, label: Description }
       - { name: body, label: Body, widget: markdown }
+    # preview_path: blog/{{slug}}
+    # show_preview_links: true
+    display_url: https://naim1004.netlify.com
+    
+    
+   
+ 
+

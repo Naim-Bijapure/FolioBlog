@@ -15,8 +15,10 @@ media_folder: content/assets
 public_folder: ../assets
 ```
 
+```
 Docs: https://www.netlifycms.org/docs/configuration-options/#media-and-public-folders.
 
+```
 ## Gatsby Plugins
 
 From [@cwgw](https://github.com/cwgw):
