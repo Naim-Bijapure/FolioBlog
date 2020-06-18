@@ -13,22 +13,25 @@ const Wrapper = styled.div`
   width: 100%;
   padding: 1%;
 
-  /* margin-bottom: 5%; */
   .Paper {
     /* border: 1px solid red; */
     height: 100px;
-    /* width: 100rem; */
-    /* padding: 1%; */
+    margin: 0.5rem;
+  }
+
+  @media ${device.laptop} {
+    /* border: 1px solid red; */
   }
 `
 const Flex = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+
 `
 const ProfileImage = styled.div`
   width: 12rem;
-  /* height: 10%; */
   border-radius: 100%;
   margin-left: 3rem;
   margin-top: 3rem;
@@ -43,9 +46,38 @@ const ProfileImage = styled.div`
 
 const Description = styled.div`
   /* border: 1px solid blue; */
-  margin:2.5rem 0rem 4rem .5rem;
-  /* margin-right:1rem; */
-  font-size:1.5rem;
+  margin: 0rem 1rem 5rem 0.5rem;
+  font-size: 1.3rem;
+  line-height: 2rem;
+
+  @media  ${device.tablet}  {
+    /* border: 1px solid red; */
+    width: 50%;
+    font-size: 1.7rem;
+    line-height:2.3rem;
+    
+    display: flex;
+    flex-direction: column;
+    
+    & ${Description}:nth-child(2) {
+      /* border: 1px solid red; */
+      margin-left:2.5rem;
+    }
+
+    & ${Description}:nth-child(3) {
+      margin-left:5rem;
+    }
+
+    & ${Description}:nth-child(4) {
+      margin-left:9rem;
+      position:relative;
+      width:30rem;
+      text-align:center;
+    }
+
+
+
+  }
 `
 
 export default function Header() {
@@ -75,10 +107,11 @@ export default function Header() {
               />
             </Paper>
           </ProfileImage>
-          <Description> 
-            <div>Hi,It's Naim </div>
-            <div>I am a,  </div>
-            <div>  full  Stack  Developer</div>
+          <Description>
+            <div> Hi,It's <b> Naim</b> </div>
+            <div>I am a, </div>
+            <div> Full Stack Developer</div>
+            <div>I Build Thing's... </div>
           </Description>
         </Flex>
       </Paper>
