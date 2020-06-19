@@ -7,6 +7,8 @@ import Image from "gatsby-image"
 
 import { device } from "../styles/device"
 
+let Description='';
+
 const Wrapper = styled.div`
   /* border: 1px solid red; */
   height: 150px;
@@ -44,7 +46,7 @@ const ProfileImage = styled.div`
   }
 `
 
-const Description = styled.div`
+ Description = styled.div`
   /* border: 1px solid blue; */
   margin: 0rem 1rem 5rem 0.5rem;
   font-size: 1.3rem;
