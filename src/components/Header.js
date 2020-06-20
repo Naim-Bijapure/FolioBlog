@@ -6,12 +6,13 @@ import { graphql, useStaticQuery } from "gatsby"
 import Image from "gatsby-image"
 
 import { device } from "../styles/device"
+import { PRIMARY } from "../utils/constants"
 
 let Description = ""
 
 const Wrapper = styled.div`
   /* border: 1px solid red; */
-  height: 150px;
+  height: 155px;
   max-width: 100%;
   padding: 1%;
 
@@ -19,7 +20,7 @@ const Wrapper = styled.div`
     /* border: 1px solid red; */
     height: 100px;
     margin: 0.5rem;
-    border-top: 3px solid #00dffc;
+    border-top: 3px solid ${props=>props.color};
   }
 
   @media ${device.laptop} {
@@ -34,8 +35,11 @@ const Flex = styled.div`
 const ProfileImage = styled.div`
   width: 12rem;
   border-radius: 100%;
-  margin-left: 3rem;
-  margin-top: 3rem;
+  /* margin-left: 3rem;
+  margin-top: 3rem; */
+  position: relative;
+  top: 1rem;
+  right: 1rem;
 
   img {
     border-radius: 100%;
@@ -52,6 +56,7 @@ Description = styled.div`
   font-size: 1.5rem;
   line-height: 2.4rem;
   font-weight: 900;
+  top: 1rem;
 
   @media ${device.tablet} {
     /* border: 1px solid red; */
@@ -72,9 +77,9 @@ export default function Header() {
   const data = useStaticQuery(
     graphql`
       query ProfileQuery {
-        avatar: file(absolutePath: { regex: "/naim_profile.png/" }) {
+        avatar: file(absolutePath: { regex: "/naim_profile-1.jpg/" }) {
           childImageSharp {
-            fluid(maxWidth: 500, quality: 99) {
+            fluid(maxWidth: 500, quality: 99, maxHeight :500) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -84,7 +89,7 @@ export default function Header() {
   )
 
   return (
-    <Wrapper>
+    <Wrapper color={PRIMARY}>
       <Paper className="Paper" elevation={3}>
         <Flex>
           <ProfileImage>

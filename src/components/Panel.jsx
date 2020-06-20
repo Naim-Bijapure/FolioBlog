@@ -9,6 +9,8 @@ import styled from "styled-components"
 import Paper from "@material-ui/core/Paper"
 
 import Articles from "../components/Articles"
+import {PRIMARY} from "../utils/constants"
+import About from "./About"
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props
@@ -50,17 +52,28 @@ let TabsOverride = styled.div`
     /* border: 1px solid red; */
     font-size: 1.4rem;
     font-weight: 600;
-    height:20px;
+    height: 20px;
   }
-  .Mui-selected{
-      /* border-bottom:2px solid blue !important; */
-      /* border-right:1px solid red; */
+  .Mui-selected {
+    /* border-bottom:2px solid blue !important; */
+    /* border-right:1px solid red; */
   }
 
-.MuiTabs-indicator{
+  .MuiTabs-indicator {
     /* border:1px solid red; */
-    background-color:#00dffc;
-}
+    background-color: #ffff;
+  }
+  .n-Active {
+    color: ${props=>props.color};
+    border: 1px solid ${props=>props.color};
+    border-radius: 8%;
+  }
+
+  .n-inActive {
+    border-bottom: 1px solid ${props=>props.color};
+    background-color: #f1edf6;
+    border-radius: 8%;
+  }
 `
 
 export default function Panel(props) {
@@ -68,28 +81,38 @@ export default function Panel(props) {
   const [value, setValue] = React.useState(0)
 
   const handleChange = (event, newValue) => {
+    console.log("handleChange -> newValue", newValue)
     setValue(newValue)
   }
 
   return (
     <div className={classes.root}>
       <Paper>
-        <TabsOverride>
+        <TabsOverride color={PRIMARY}>
           <Tabs
             value={value}
             onChange={handleChange}
             centered
             variant="fullWidth"
-            // indicatorColor={'#00dffc'}
+            // indicatorColor={'PRIMARY'}
           >
-            <Tab label="About" />
-            <Tab label="Articles" />
-            <Tab label="Projects" />
+            <Tab
+              label="About"
+              className={value == 0 ? "n-Active" : "n-inActive"}
+            />
+            <Tab
+              label="Articles"
+              className={value == 1 ? "n-Active" : "n-inActive"}
+            />
+            <Tab
+              label="Projects"
+              className={value == 2 ? "n-Active" : "n-inActive"}
+            />
           </Tabs>
         </TabsOverride>
       </Paper>
       <TabPanel value={value} index={0}>
-        About
+        <About/>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <Articles />
