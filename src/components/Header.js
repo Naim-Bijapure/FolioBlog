@@ -20,7 +20,7 @@ const Wrapper = styled.div`
     /* border: 1px solid red; */
     height: 100px;
     margin: 0.5rem;
-    border-top: 3px solid ${props=>props.color};
+    border-top: 3px solid ${props => props.color};
   }
 
   @media ${device.laptop} {
@@ -31,6 +31,8 @@ const Flex = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  bottom: 9.5rem;
 `
 const ProfileImage = styled.div`
   width: 12rem;
@@ -79,7 +81,7 @@ export default function Header() {
       query ProfileQuery {
         avatar: file(absolutePath: { regex: "/naim_profile-1.jpg/" }) {
           childImageSharp {
-            fluid(maxWidth: 500, quality: 99, maxHeight :500) {
+            fluid(maxWidth: 500, quality: 99, maxHeight: 500) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -91,6 +93,28 @@ export default function Header() {
   return (
     <Wrapper color={PRIMARY}>
       <Paper className="Paper" elevation={3}>
+        <svg
+          viewBox="0 0 500 150"
+          preserveAspectRatio="none"
+          // style="height: 100%; width: 100%;"
+          style={{ height: "100%", width: "100%" }}
+        >
+          <path
+            d=" M267.68,39.96 C122.64,203.78 462.38,-132.73 503.00,143.58 L500.00,0.00 L-7.15,-0.49 Z "
+            // d=" M267.68,39.96 C122.64,203.78 462.38,-132.73 503.00,143.58 L500.00,0.00 L-7.15,-0.49 Z "
+            // style="stroke: none; fill: #08f;"
+            style={{ stroke: "none", fill: PRIMARY }}
+          ></path>
+
+          <path
+            d="M-0.94,-68.58 C13.16,348.84 452.22,-16.28 532.35,224.50 L482.69,179.10 L0.00,150.00 Z"
+            // d="M-0.94,-68.58 C335.96,-113.98 452.22,-16.8 536.31,-75.49 L446.57,100.16 L86.53,102.14 Z "
+            style={{ stroke: "none", fill: PRIMARY }}
+          ></path>
+
+        </svg>
+
+
         <Flex>
           <ProfileImage>
             <Paper elevation={3} className="Profile__Paper">

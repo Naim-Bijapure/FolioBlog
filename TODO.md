@@ -6,11 +6,8 @@ LIABRARIES TO USE:
           
 
  TODO: 
-   1. create a good header profile
-             1. add image first
-             2. add description 
-
-
+   1. add svg header on image 
+   2. create about page
 
    FEATURES NEED TO BE ADDED:
         1. good header  with profile and description
