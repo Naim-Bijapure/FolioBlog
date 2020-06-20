@@ -7,18 +7,19 @@ import Image from "gatsby-image"
 
 import { device } from "../styles/device"
 
-let Description='';
+let Description = ""
 
 const Wrapper = styled.div`
   /* border: 1px solid red; */
   height: 150px;
-  width: 100%;
+  max-width: 100%;
   padding: 1%;
 
   .Paper {
     /* border: 1px solid red; */
     height: 100px;
     margin: 0.5rem;
+    border-top: 3px solid #00dffc;
   }
 
   @media ${device.laptop} {
@@ -29,8 +30,6 @@ const Flex = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
-
 `
 const ProfileImage = styled.div`
   width: 12rem;
@@ -46,39 +45,26 @@ const ProfileImage = styled.div`
   }
 `
 
- Description = styled.div`
+Description = styled.div`
   /* border: 1px solid blue; */
-  margin: 0rem 1rem 5rem 0.5rem;
-  font-size: 1.3rem;
-  line-height: 2rem;
+  position: relative;
+  bottom: 2rem;
+  font-size: 1.5rem;
+  line-height: 2.4rem;
+  font-weight: 900;
 
-  @media  ${device.tablet}  {
+  @media ${device.tablet} {
     /* border: 1px solid red; */
     width: 50%;
     font-size: 1.7rem;
-    line-height:2.3rem;
-    
-    display: flex;
-    flex-direction: column;
-    
+    line-height: 2.5rem;
+    position: relative;
+    left: 2rem;
+
     & ${Description}:nth-child(2) {
-      /* border: 1px solid red; */
-      margin-left:2.5rem;
+      position: relative;
+      left: 4rem;
     }
-
-    & ${Description}:nth-child(3) {
-      margin-left:5rem;
-    }
-
-    & ${Description}:nth-child(4) {
-      margin-left:9rem;
-      position:relative;
-      width:30rem;
-      text-align:center;
-    }
-
-
-
   }
 `
 
@@ -110,10 +96,8 @@ export default function Header() {
             </Paper>
           </ProfileImage>
           <Description>
-            <div> Hi,It's <b> Naim</b> </div>
-            <div>I am a, </div>
+            <div>Naim Bijapure</div>
             <div> Full Stack Developer</div>
-            <div>I Build Thing's... </div>
           </Description>
         </Flex>
       </Paper>
