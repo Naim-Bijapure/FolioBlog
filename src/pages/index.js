@@ -1,10 +1,9 @@
 import { makeStyles } from "@material-ui/core/styles"
 import React from "react"
+import { ThemeProvider } from "styled-components"
 import Header from "../components/Header"
 import Panel from "../components/Panel"
-
-
-
+import {PRIMARY,SECONDARY} from "../utils/constants"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -13,14 +12,20 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
+const theme ={
+  PRIMARY:PRIMARY,
+  SECONDARY:SECONDARY
+}
+
 export default function SimpleTabs(props) {
   const classes = useStyles()
 
-
   return (
     <div className={classes.root}>
-      <Header />
-      <Panel />
+      <ThemeProvider theme={theme} >
+        <Header />
+        <Panel />
+      </ThemeProvider>
     </div>
   )
 }

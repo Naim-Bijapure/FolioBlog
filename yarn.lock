@@ -2661,7 +2661,7 @@
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.7.3.tgz#856c99cdc1551d22c22b18b5402719affec9839a"
   integrity sha512-cS5owqtwzLN5kY+l+KgKdRJ/Cee8tlmQoGQuIE9tWnSmS3JMKzmxo2HIAk2wODMifGwO20d62xZQLYz+RLfXmw==
 
-"@types/hoist-non-react-statics@^3.3.1":
+"@types/hoist-non-react-statics@*", "@types/hoist-non-react-statics@^3.3.1":
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
   integrity sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==
@@ -2712,6 +2712,13 @@
     "@types/history" "*"
     "@types/react" "*"
 
+"@types/react-native@*":
+  version "0.63.1"
+  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.63.1.tgz#81da30aeaaa034039efd23ccb1c54786b1630966"
+  integrity sha512-mo2DAgliCqdNyivBa0/JL8JIkebt9TU0ATmsvtUvypIP5qN+YJekbVPpHt6WLXEZyBm7LtmIqxbjIHqeoaojsg==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-transition-group@^4.2.0":
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@types/react-transition-group/-/react-transition-group-4.4.0.tgz#882839db465df1320e4753e6e9f70ca7e9b4d46d"
@@ -2725,6 +2732,16 @@
   integrity sha512-L+AudFJkDukk+ukInYvpoAPyJK5q1GanFOINOJnM0w6tUgITuWvJ4jyoBPFL7z4/L8hGLd+K/6xR5uUjXu0vVg==
   dependencies:
     "@types/prop-types" "*"
+    csstype "^2.2.0"
+
+"@types/styled-components@^5.1.1":
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@types/styled-components/-/styled-components-5.1.1.tgz#17c3b3a299aa38254189e04a72a8ee009a22e42d"
+  integrity sha512-fIjKvDU1LJExBZWEQilHqzfpOK4KUwBsj5zC79lxa94ekz8oDQSBNcayMACBImxIuevF+NbBGL9O/2CQ67Zhig==
+  dependencies:
+    "@types/hoist-non-react-statics" "*"
+    "@types/react" "*"
+    "@types/react-native" "*"
     csstype "^2.2.0"
 
 "@types/tmp@^0.0.32":

@@ -50,9 +50,9 @@ let TabsOverride = styled.div`
   /* border: 1px solid red; */
   & button {
     /* border: 1px solid red; */
+    height: 20px;
     font-size: 1.4rem;
     font-weight: 600;
-    height: 20px;
   }
   .Mui-selected {
     /* border-bottom:2px solid blue !important; */
@@ -64,15 +64,15 @@ let TabsOverride = styled.div`
     background-color: #ffff;
   }
   .n-Active {
-    color: ${props=>props.color};
-    border: 1px solid ${props=>props.color};
-    border-radius: 8%;
+    color: ${props=>props.theme.PRIMARY};
+    border: 2px solid ${props=>props.theme.PRIMARY};
+    border-radius: 7%;
   }
 
   .n-inActive {
-    border-bottom: 1px solid ${props=>props.color};
     background-color: #f1edf6;
-    border-radius: 8%;
+    border-bottom: 2px solid ${props=>props.theme.PRIMARY};
+    border-radius: 7%;
   }
 `
 
@@ -88,7 +88,7 @@ export default function Panel(props) {
   return (
     <div className={classes.root}>
       <Paper>
-        <TabsOverride color={PRIMARY}>
+        <TabsOverride >
           <Tabs
             value={value}
             onChange={handleChange}

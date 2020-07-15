@@ -20,7 +20,7 @@ const Wrapper = styled.div`
     /* border: 1px solid red; */
     height: 100px;
     margin: 0.5rem;
-    border-top: 3px solid ${props => props.color};
+    border-top: 3px solid ${props=>props.theme.PRIMARY};
   }
 
   @media ${device.laptop} {
@@ -91,8 +91,8 @@ export default function Header() {
   )
 
   return (
-    <Wrapper color={PRIMARY}>
-      <Paper className="Paper" elevation={3}>
+    <Wrapper >
+      <Paper className="Paper" elevation={6}>
         <svg
           viewBox="0 0 500 150"
           preserveAspectRatio="none"
@@ -117,7 +117,7 @@ export default function Header() {
 
         <Flex>
           <ProfileImage>
-            <Paper elevation={3} className="Profile__Paper">
+            <Paper elevation={6} className="Profile__Paper">
               <Image
                 fluid={data.avatar.childImageSharp.fluid}
                 draggable={false}
