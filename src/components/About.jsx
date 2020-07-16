@@ -11,11 +11,17 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   font-size: 1.5rem;
-  background-color: "gray";
+  background-color: ${props => props.theme.SECONDARY};
+
+  .MuiPaper-root {
+    border-radius: 5%;
+    border: 0.1px solid ${props => props.theme.PRIMARY};
+  }
+
   .Description {
     padding: 1rem;
-    border: 0.2px solid ${props => props.theme.PRIMARY};
     height: 20rem;
+    color: ${props => props.theme.PRIMARY};
 
     &:hover {
       /* border:1px solid red; */
@@ -33,8 +39,10 @@ const SkillsSection = styled.div`
   flex-direction: column;
   align-items: center;
 
+  /* border-radius: 100%; */
+
   .skills__header {
-    border-bottom:.4rem solid ${props=>props.theme.PRIMARY}
+    border-bottom: 0.4rem solid ${props => props.theme.PRIMARY};
   }
   .skills__flip-section {
     /* border: 1px solid red; */
@@ -43,6 +51,17 @@ const SkillsSection = styled.div`
     height: 20rem;
     perspective: 900px;
   }
+
+  .MuiPaper-root {
+    border-radius: 5%;
+    border: 0.1px solid ${props => props.theme.PRIMARY};
+
+    &:hover {
+      /* border:1px solid red; */
+      box-shadow: 0 0 10px 1px ${props => props.theme.PRIMARY};
+    }
+  }
+
   .skills {
     /* border: 1px solid blue; */
 
@@ -62,26 +81,41 @@ const SkillsSection = styled.div`
     position: absolute;
     width: 100%;
     height: 100%;
-    /* line-height: 260px; */
     color: white;
+    /* line-height: 260px; */
     /* text-align: center; */
     font-weight: bold;
     font-size: 40px;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+
+    .MuiChip-root {
+      font-size: small;
+      color: ${props => props.theme.PRIMARY};
+      background-color: ${props => props.theme.SECONDARY};
+      border: 1px solid ${props => props.theme.PRIMARY};
+      margin: 0.3rem;
+    }
+    .skills__face--chips {
+      display:flex;
+      /* justify-content:space-between; */
+      flex-wrap:wrap;
+    }
   }
   .skills__face--front {
     padding: 10px;
   }
 
   .skills__face--back {
+    padding: 10px;
     transform: rotateY(180deg);
   }
   .skills__button {
-      padding:1rem;
+    padding: 1rem;
     button {
       color: ${props => props.theme.PRIMARY};
-      background-color:${props => props.theme.SECONDARY};
+      background-color: ${props => props.theme.SECONDARY};
+      border: 1px solid ${props => props.theme.PRIMARY};
     }
   }
 `
@@ -114,66 +148,37 @@ export default function About() {
                 className="skills__face  skills__face--front"
                 style={{ display: !isFlipped ? "block" : "none" }}
               >
-                <Chip
-                  // size="large"
-                  // icon={<FaceIcon />}
-                  label="React"
-                  clickable
-                  color="primary"
-                  // onDelete={handleDelete}
-                  // deleteIcon={<DoneIcon />}
-                />
+                <div className="skills__face--chips">
+                  <Chip label="Reactjs" clickable />
 
-                {/* <Chip
-                // size="large"
-                // icon={<FaceIcon />}
-                label="React"
-                clickable
-                color="primary"
-                // onDelete={handleDelete}
-                // deleteIcon={<DoneIcon />}
-              />
+                  <Chip label="Angular" clickable />
 
-              <Chip
-                // size="large"
-                // icon={<FaceIcon />}
-                label="React"
-                clickable
-                color="primary"
-                // onDelete={handleDelete}
-                // deleteIcon={<DoneIcon />}
-              /> */}
+                  <Chip label="Vuejs" clickable />
+
+                  <Chip label="React Native" clickable />
+                  <Chip label="Flutter" clickable />
+                  <Chip label="Gatsby" clickable />
+                  <Chip label="Nextjs" clickable />
+
+
+                  <Chip label="Html" clickable />
+                  <Chip label="CSS3" clickable />
+                  <Chip label="Javascript" clickable />
+                  <Chip label="PHP" clickable />
+                  <Chip label="Wordpress" clickable />
+                  <Chip label="Wordpress" clickable />
+                  <Chip label="Wordpress" clickable />
+                  <Chip label="Wordpress" clickable />
+                  <Chip label="Wordpress" clickable />
+                  <Chip label="Wordpress" clickable />
+                  <Chip label="Wordpress" clickable />
+                </div>
               </div>
 
               <div className="skills__face skills__face--back">
-                <Chip
-                  // size="large"
-                  // icon={<FaceIcon />}
-                  label="Nodejs"
-                  clickable
-                  color="primary"
-                  // onDelete={handleDelete}
-                  // deleteIcon={<DoneIcon />}
-                />
-                {/* <Chip
-                // size="large"
-                // icon={<FaceIcon />}
-                label="React"
-                clickable
-                color="primary"
-                // onDelete={handleDelete}
-                // deleteIcon={<DoneIcon />}
-              />
-
-              <Chip
-                // size="large"
-                // icon={<FaceIcon />}
-                label="React"
-                clickable
-                color="primary"
-                // onDelete={handleDelete}
-                // deleteIcon={<DoneIcon />}
-              /> */}
+                <div className="skills__face--chips">
+                  <Chip label="Nodejs" clickable color="primary" />
+                </div>
               </div>
             </Paper>
           </div>
