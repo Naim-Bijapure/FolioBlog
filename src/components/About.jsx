@@ -3,8 +3,9 @@ import Card from "@material-ui/core/Card"
 import Paper from "@material-ui/core/Paper"
 import Chip from "@material-ui/core/Chip"
 import Button from "@material-ui/core/Button"
-
 import styled from "styled-components"
+
+import { device } from "../styles/device"
 
 const Container = styled.div`
   display: flex;
@@ -22,6 +23,15 @@ const Container = styled.div`
     padding: 1rem;
     height: 20rem;
     color: ${props => props.theme.PRIMARY};
+
+    @media ${device.laptop} {
+      /* border: 1px solid red; */
+      position:relative;
+      padding: 1rem;
+      height: 10rem;
+      width: 70%;
+      left:15%;
+    }
 
     &:hover {
       /* border:1px solid red; */
@@ -94,12 +104,12 @@ const SkillsSection = styled.div`
       color: ${props => props.theme.PRIMARY};
       background-color: ${props => props.theme.SECONDARY};
       border: 1px solid ${props => props.theme.PRIMARY};
-      margin: 0.3rem;
+      margin: 0.2rem;
     }
     .skills__face--chips {
-      display:flex;
+      display: flex;
       /* justify-content:space-between; */
-      flex-wrap:wrap;
+      flex-wrap: wrap;
     }
   }
   .skills__face--front {
@@ -118,16 +128,66 @@ const SkillsSection = styled.div`
       border: 1px solid ${props => props.theme.PRIMARY};
     }
   }
+
+  .skills__face--show {
+    display: block !important;
+  }
+
+  .skills__face--hide {
+    display: none !important;
+  }
 `
 
 export default function About() {
   const [isFlipped, setisFlipped] = useState(false)
 
-  useEffect(() => {})
+  useEffect(() => {
+    // console.log("About -> useEffect")
+    // INITIAL DEMO FLIP
+    setTimeout(() => {
+      setisFlipped(flipped => {
+        setTimeout(() => {
+          console.log("About -> setTimeout")
+          setisFlipped(flipped => !flipped)
+        }, 2000)
+        return !flipped
+      })
+    }, 3000)
+  }, [])
 
   function OnFlip() {
     setisFlipped(flipped => !flipped)
   }
+  let fronEndSkills = [
+    "Reactjs",
+    "Angular",
+    "Vuejs",
+    "React Native",
+    "Flutter",
+    "Gatsby",
+    "Nextjs",
+    "PHP",
+    "WordPress",
+    "HTML",
+    "CSS3",
+    "Javascript",
+    "jQuery",
+    "Boostrap",
+    "Tailwind Css",
+  ]
+  let backendSkills = [
+    "Nodejs",
+    "Express",
+    "Python",
+    "Linux",
+    "Git",
+    "MySql",
+    "mongoDB",
+    "GraphQL",
+    "AWS",
+    "Docker",
+    "firebase",
+  ]
   return (
     <div>
       <Container>
@@ -137,7 +197,9 @@ export default function About() {
           I enjoy working with :
         </Paper>
         <SkillsSection>
-          <div className="skills__header">Front End Skills</div>
+          <div className="skills__header">
+            {(!isFlipped ? "Front " : "Back ") + "End Skills"}
+          </div>
 
           <div className="skills__flip-section">
             <Paper
@@ -145,39 +207,21 @@ export default function About() {
               elevation={6}
             >
               <div
-                className="skills__face  skills__face--front"
+                className={["skills__face  skills__face--front"]}
                 style={{ display: !isFlipped ? "block" : "none" }}
               >
-                <div className="skills__face--chips">
-                  <Chip label="Reactjs" clickable />
-
-                  <Chip label="Angular" clickable />
-
-                  <Chip label="Vuejs" clickable />
-
-                  <Chip label="React Native" clickable />
-                  <Chip label="Flutter" clickable />
-                  <Chip label="Gatsby" clickable />
-                  <Chip label="Nextjs" clickable />
-
-
-                  <Chip label="Html" clickable />
-                  <Chip label="CSS3" clickable />
-                  <Chip label="Javascript" clickable />
-                  <Chip label="PHP" clickable />
-                  <Chip label="Wordpress" clickable />
-                  <Chip label="Wordpress" clickable />
-                  <Chip label="Wordpress" clickable />
-                  <Chip label="Wordpress" clickable />
-                  <Chip label="Wordpress" clickable />
-                  <Chip label="Wordpress" clickable />
-                  <Chip label="Wordpress" clickable />
+                <div className={`skills__face--chips `}>
+                  {fronEndSkills.map(skillName => (
+                    <Chip label={skillName} clickable />
+                  ))}
                 </div>
               </div>
 
               <div className="skills__face skills__face--back">
                 <div className="skills__face--chips">
-                  <Chip label="Nodejs" clickable color="primary" />
+                  {backendSkills.map(skillName => (
+                    <Chip label={skillName} clickable />
+                  ))}
                 </div>
               </div>
             </Paper>
@@ -185,7 +229,7 @@ export default function About() {
 
           <div className="skills__button">
             <Button onClick={OnFlip} variant="contained" color="primary">
-              Backend Skills
+              {(isFlipped ? "Front " : "Back ") + "End Skills -->"}
             </Button>
           </div>
         </SkillsSection>
