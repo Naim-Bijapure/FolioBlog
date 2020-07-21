@@ -9,7 +9,7 @@ import styled from "styled-components"
 import Paper from "@material-ui/core/Paper"
 
 import Articles from "../components/Articles"
-import {PRIMARY} from "../utils/constants"
+import { PRIMARY } from "../utils/constants"
 import About from "./About"
 
 function TabPanel(props) {
@@ -41,11 +41,14 @@ TabPanel.propTypes = {
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: "red",
   },
 }))
 
 // styles
+const Container = styled.div`
+  background-color: ${props => props.theme.SECONDARY};
+`
 let TabsOverride = styled.div`
   /* border: 1px solid red; */
   & button {
@@ -64,15 +67,15 @@ let TabsOverride = styled.div`
     background-color: #ffff;
   }
   .n-Active {
-    color: ${props=>props.theme.PRIMARY};
-    border: 2px solid ${props=>props.theme.PRIMARY};
+    color: ${props => props.theme.PRIMARY};
+    border: 2px solid ${props => props.theme.PRIMARY};
     border-radius: 7%;
   }
 
   .n-inActive {
     background-color: #f1edf6;
-    border-bottom: 2px solid ${props=>props.theme.PRIMARY};
-    border-radius: 7%;
+    border-bottom: 2px solid ${props => props.theme.PRIMARY};
+    border-radius: 3%;
   }
 `
 
@@ -86,9 +89,10 @@ export default function Panel(props) {
   }
 
   return (
-    <div className={classes.root}>
+    <Container>
+      {/* <div className={classes.root}> */}
       <Paper>
-        <TabsOverride >
+        <TabsOverride>
           <Tabs
             value={value}
             onChange={handleChange}
@@ -112,7 +116,7 @@ export default function Panel(props) {
         </TabsOverride>
       </Paper>
       <TabPanel value={value} index={0}>
-        <About/>
+        <About />
       </TabPanel>
       <TabPanel value={value} index={1}>
         <Articles />
@@ -120,6 +124,6 @@ export default function Panel(props) {
       <TabPanel value={value} index={2}>
         Projects
       </TabPanel>
-    </div>
+    </Container>
   )
 }
