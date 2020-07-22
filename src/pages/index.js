@@ -4,6 +4,7 @@ import styled, { ThemeProvider } from "styled-components"
 import Header from "../components/Header"
 import Panel from "../components/Panel"
 import { PRIMARY, SECONDARY } from "../utils/constants"
+import Footer from "../components/Footer"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,6 +25,7 @@ export default function SimpleTabs(props) {
       <ThemeProvider theme={theme}>
         <Header />
         <Panel />
+        <Footer />
       </ThemeProvider>
     </Container>
   )
@@ -31,5 +33,5 @@ export default function SimpleTabs(props) {
 
 // styles
 const Container = styled.div`
-  /* background-color: ${SECONDARY}; */
+  background-color: ${SECONDARY};
 `

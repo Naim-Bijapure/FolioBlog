@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
 
 // styles
 const Container = styled.div`
-  background-color: ${props => props.theme.SECONDARY};
+  /* background-color: ${props => props.theme.SECONDARY}; */
 `
 let TabsOverride = styled.div`
   /* border: 1px solid red; */

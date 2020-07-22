@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react"
-import Card from "@material-ui/core/Card"
-import Paper from "@material-ui/core/Paper"
-import Chip from "@material-ui/core/Chip"
-import Button from "@material-ui/core/Button"
-import Switch from "@material-ui/core/Switch"
+// import Card from "@material-ui/core/Card"
+// import Paper from "@material-ui/core/Paper"
+// import Chip from "@material-ui/core/Chip"
+// import Button from "@material-ui/core/Button"
+// import Switch from "@material-ui/core/Switch"
+
+import { Grow, Switch, Chip, Paper, Card, Button } from "@material-ui/core"
 
 import styled from "styled-components"
 
@@ -60,6 +62,7 @@ export default function About() {
     "Express",
     "Python",
     "Linux",
+    "Bash",
     "Git",
     "MySql",
     "mongoDB",
@@ -71,11 +74,13 @@ export default function About() {
   return (
     <div>
       <Container>
-        <Paper className="Description" elevation={3}>
-          I'm a passionate full stack web developer. I love creating beautiful
-          Web Applications using MERN or JAM Stacks. Here is the languages/tools
-          I enjoy working with :
-        </Paper>
+        <Grow in={true} timeout={1000}>
+          <Paper className="Description" elevation={3}>
+            I'm a passionate full stack web developer. I love creating beautiful
+            Web Applications using MERN or JAM Stacks. Here is the
+            languages/tools I enjoy working with :
+          </Paper>
+        </Grow>
         <SkillsSection>
           <div className="skiils__switch">
             <Switch
@@ -99,16 +104,28 @@ export default function About() {
                 style={{ display: !isFlipped ? "block" : "none" }}
               >
                 <div className={`skills__face--chips `}>
-                  {fronEndSkills.map(skillName => (
-                    <Chip label={skillName} clickable />
+                  {fronEndSkills.map((skillName, i) => (
+                    <Grow
+                      in={!isFlipped}
+                      // {...(!isFlipped ? { timeout: 500 * i } : {})}
+                      timeout={500 * i}
+                    >
+                      <Chip label={skillName} clickable />
+                    </Grow>
                   ))}
                 </div>
               </div>
 
               <div className="skills__face skills__face--back">
                 <div className="skills__face--chips">
-                  {backendSkills.map(skillName => (
-                    <Chip label={skillName} clickable />
+                  {backendSkills.map((skillName, i) => (
+                    <Grow
+                      in={isFlipped}
+                      // {...(isFlipped ? { timeout: 500 * i } : {})}
+                      timeout={500 * i}
+                    >
+                      <Chip label={skillName} clickable />
+                    </Grow>
                   ))}
                 </div>
               </div>
@@ -138,8 +155,8 @@ const Container = styled.div`
     border-radius: 5%;
     border: 0.1px solid ${props => props.theme.PRIMARY};
 
-    @media ${device.laptop} {
-      border-radius: 3%;
+    @media ${device.tablet} {
+      border-radius: 10px;
       border: 0.1px solid ${props => props.theme.PRIMARY};
     }
   }
@@ -149,10 +166,10 @@ const Container = styled.div`
     height: 20rem;
     color: ${props => props.theme.PRIMARY};
 
-    @media ${device.laptop} {
+    @media ${device.tablet} {
       /* border: 1px solid red; */
       /* padding: 2rem; */
-      width: 80rem;
+      width: 70%;
       margin: 0 auto;
     }
 
@@ -172,10 +189,10 @@ const SkillsSection = styled.div`
   flex-direction: column;
   align-items: center;
 
-  @media ${device.laptop} {
+  @media ${device.tablet} {
     /* border: 1px solid red; */
     /* padding: 2rem; */
-    width: 80rem;
+    width: 70%;
     margin: 0 auto;
   }
 
@@ -193,7 +210,7 @@ const SkillsSection = styled.div`
   }
 
   .MuiPaper-root {
-    border-radius: 5%;
+    border-radius: 10px;
     border: 0.1px solid ${props => props.theme.PRIMARY};
 
     &:hover {
@@ -237,10 +254,9 @@ const SkillsSection = styled.div`
       border: 1px solid ${props => props.theme.PRIMARY};
       margin: 0.2rem;
 
-      @media ${device.laptop} {
+      @media ${device.tablet} {
         font-size: large;
-        margin: .6rem;
-
+        margin: 0.6rem;
       }
     }
 
@@ -250,7 +266,7 @@ const SkillsSection = styled.div`
       flex-wrap: wrap;
       justify-content: center;
 
-      @media ${device.laptop} {
+      @media ${device.tablet} {
         width: 50rem;
         margin: 0 auto;
       }
@@ -284,7 +300,7 @@ const SkillsSection = styled.div`
   .skiils__switch {
     .MuiSwitch-root {
       width: 120px;
-      height: 40px;
+      height: 45px;
       .Mui-checked {
         color: ${props => props.theme.PRIMARY};
       }
@@ -293,6 +309,11 @@ const SkillsSection = styled.div`
       }
       .MuiSwitch-track {
         border: 1px solid ${props => props.theme.PRIMARY};
+        border-radius: 25px;
+      }
+      .MuiSwitch-thumb {
+        width: 25px;
+        height: 25px;
       }
 
       /* root end */
