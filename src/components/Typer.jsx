@@ -40,7 +40,7 @@ export default function Typer({ titleText }) {
         setState(state => ({
           ...state,
           isDeleting: false,
-          loopNum: state.loopNum + 1,
+          loopNum: state.loopNum + 1
         }))
       }
 
